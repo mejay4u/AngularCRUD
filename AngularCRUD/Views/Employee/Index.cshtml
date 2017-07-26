@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/EmployeeAngular.js"></script>
+<style>
+    .btn-space {
+        margin-left: -5%;
+        background-color: cornflowerblue;
+        font-size: large;
+    }
+</style>
+<h2>Index</h2>
+<div ng-app="myApp">
+    <div ng-controller="myCtrl" ng-init="GetAllData()" class="divList">
+        <p class="divHead">List of Employee</p>
+        <table cellpadding="12" class="table table-bordered table-hover">
+            <tr>
+                <td>
+                    <b>ID</b>
+                </td>
+                <td>
+                    <b>Name</b>
+                </td>
+                <td>
+                    <b>City</b>
+                </td>
+                <td>
+                    <b>Gender</b>
+                </td>
+                <td>
+                    <b>Salary</b>
+                </td>
+                <td>
+                    <b>Date of birth</b>
+                </td>
+                <td>
+                    <b>Actions</b>
+                </td>
+            </tr>
+            <tr ng-repeat="Emp in employees">
+                <td>
+                    {{Emp.Id}}
+                </td>
+                <td>
+                    {{Emp.Name}}
+                </td>
+                <td>
+                    {{Emp.City}}
+                </td>
+                <td>
+                    {{Emp.Gender}}
+                </td>
+                <td>
+                    {{Emp.Salary}}
+                </td>
+                <td>
+                    {{Emp.DateofBirth}}
+                </td>
+                <td>
+                    <input type="button" class="btn btn-warning" value="Update" ng-click="UpdateEmp(Emp)" />
+                    <input type="button" class="btn btn-danger" value="Delete" ng-click="DeleteEmp(Emp)" />
+                </td>
+            </tr>
+        </table>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><span id="spn">Add New Employee</span></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container" role="form">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Name:
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" class="form-control col-md-7 col-xs-12" id="inputName" placeholder="Name" ng-model="Name">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        City:
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" class="form-control col-md-7 col-xs-12" id="inputCity" placeholder="City" ng-model="City">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Gender:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="inputGender" placeholder="Gender" ng-model="Gender">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Salary:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="inputLabel4" placeholder="Salary" ng-model="Salary">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Date of Birth:</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="inputLabel5" placeholder="Date of birth" ng-model="DateofBirth">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-sm-6 col-lg-4">
+                                <input type="button" id="btnSave" class="form-control btn-space" value="Submit" ng-click="InsertData()" />
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-horizontal" role="form">
+
+        </div>
+    </div>
+    @Html.Hidden("EmpID_")
+
+</div>  
