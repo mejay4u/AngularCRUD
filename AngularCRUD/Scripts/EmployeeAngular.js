@@ -1,4 +1,5 @@
-﻿var app = angular.module("myApp", []);
+﻿
+var app = angular.module("myApp", []);
 app.controller("myCtrl", function ($scope, $http) {
     debugger;
     $scope.InsertData = function () {
@@ -22,8 +23,10 @@ app.controller("myCtrl", function ($scope, $http) {
                 $scope.City = "";
                 $scope.Gender = "";
                 $scope.Salary = "";
+                CloseModal();
             })
         } else {
+       
             $scope.Employe = {};
             $scope.Employe.Name = $scope.Name;
             $scope.Employe.City = $scope.City;
@@ -47,6 +50,7 @@ app.controller("myCtrl", function ($scope, $http) {
                 document.getElementById("btnSave").setAttribute("value", "Submit");
                 document.getElementById("btnSave").style.backgroundColor = "cornflowerblue";
                 document.getElementById("spn").innerHTML = "Add New Employee";
+                CloseModal();
             })
         }
     }
@@ -72,6 +76,7 @@ app.controller("myCtrl", function ($scope, $http) {
         })
     };
     $scope.UpdateEmp = function (Emp) {
+      
         document.getElementById("EmpID_").value = Emp.Id;
         $scope.Name = Emp.Name;
         $scope.City = Emp.City;
@@ -79,7 +84,14 @@ app.controller("myCtrl", function ($scope, $http) {
         $scope.Salary = Emp.Salary;
         $scope.DateofBirth = Emp.DateofBirth;
         document.getElementById("btnSave").setAttribute("value", "Update");
-        document.getElementById("btnSave").style.backgroundColor = "Yellow";
+        document.getElementById("btnSave").style.backgroundColor = "Orange";
         document.getElementById("spn").innerHTML = "Update Employee Information";
     }
 })
+
+function UpdateModal() {
+    $('#myModal').modal('show');
+}
+function CloseModal() {
+    $('#myModal').modal('hide');
+}
